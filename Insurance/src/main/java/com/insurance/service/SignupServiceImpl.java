@@ -33,5 +33,3 @@ public class SignupServiceImpl implements SignupService {
         return "Account created successfully";
     }
 }
-
-

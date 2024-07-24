@@ -1,4 +1,5 @@
 package com.insurance.controller;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,31 +15,36 @@ import com.insurance.service.SignupService;
 
 import jakarta.validation.Valid;
 
-@RestController 
+@RestController
 @RequestMapping("/api")
 public class SignupController {
-	
-	
 
     @Autowired
-    SignupService signupService;
-      //localhost:8080/api/createAccount
+    private SignupService signupService;
+
     // Endpoint to create a new account
     @PostMapping("/createAccount")
     public ResponseEntity<String> createAccount(@Valid @RequestBody SignupEntity signupEntity, BindingResult bindingResult) {
-        // Check for validation errors
-        if (bindingResult.hasErrors()) {
-            // If there are validation errors, collect default messages
-            StringBuilder errorMessages = new StringBuilder();
-            for (FieldError error : bindingResult.getFieldErrors()) {
-                errorMessages.append(error.getDefaultMessage()).append(". ");
+        try {
+            // Check for validation errors
+            if (bindingResult.hasErrors()) {
+                // If there are validation errors, collect default messages
+                StringBuilder errorMessages = new StringBuilder();
+                for (FieldError error : bindingResult.getFieldErrors()) {
+                    errorMessages.append(error.getDefaultMessage()).append(". ");
+                }
+                return ResponseEntity.badRequest().body(errorMessages.toString());
             }
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorMessages.toString());
-        }
 
-        // If no validation errors, proceed with account creation
-        String createAccountResult = signupService.createAccount(signupEntity);
-        System.out.println(createAccountResult);
-        return ResponseEntity.status(HttpStatus.CREATED).body(createAccountResult);
+            // If no validation errors, proceed with account creation
+            String createAccountResult = signupService.createAccount(signupEntity);
+           
+            return ResponseEntity.status(HttpStatus.CREATED).body(createAccountResult);
+        } catch (Exception e) {
+            // Log the exception
+            e.printStackTrace();
+            // Return an appropriate error response
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An error occurred during account creation");
+        }
     }
 }
