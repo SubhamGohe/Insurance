@@ -23,6 +23,7 @@ public class SignupController {
     private SignupService signupService;
 
     // Endpoint to create a new account
+    //localhost:8080/api/createAccount
     @PostMapping("/createAccount")
     public ResponseEntity<String> createAccount(@Valid @RequestBody SignupEntity signupEntity, BindingResult bindingResult) {
         try {
