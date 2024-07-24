@@ -7,4 +7,12 @@ import com.insurance.model.SignupEntity;
 
 public interface SignupRepository extends JpaRepository<SignupEntity, Long> {
 
+	SignupEntity findByEmailId(String emailId);
+
+	SignupEntity findByPhoneNumber(String phoneNumber);
+
+	
+
+	
+
 }
