@@ -19,9 +19,9 @@ import lombok.Setter;
 @NoArgsConstructor
 //@Entity
 public class LoginEntity {
-	    @Id
-	    @GeneratedValue(strategy = GenerationType.AUTO)
-	    private long id;
+//	    @Id
+//	    @GeneratedValue(strategy = GenerationType.AUTO)
+	    private long clientId;
 
 //	    @NotBlank(message = "Name is mandatory")
 //	    @Pattern(regexp = "^[a-zA-Z]+$", message = "Name must contain only letters")
@@ -45,12 +45,12 @@ public class LoginEntity {
 	             message = "Password must contain at least one digit, one lowercase and one uppercase letter, and one special character")
 	    private String password;
 
-		public long getId() {
-			return id;
+		public long getClientId() {
+			return clientId;
 		}
 
-		public void setId(long id) {
-			this.id = id;
+		public void setClientId(long clientId) {
+			this.clientId = clientId;
 		}
 
 //		public String getName() {
@@ -89,7 +89,7 @@ public class LoginEntity {
 
 		@Override
 		public String toString() {
-			return "LoginEntity [id=" + id + ", phoneNumber=" + phoneNumber + ", emailId=" + emailId + ", password="
+			return "LoginEntity [clientId=" + clientId + ", phoneNumber=" + phoneNumber + ", emailId=" + emailId + ", password="
 					+ password + "]";
 		}
 	    
