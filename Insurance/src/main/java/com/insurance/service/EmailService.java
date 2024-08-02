@@ -12,5 +12,5 @@ public interface EmailService {
 	//sendEmail withHtml
 	void sendEmailWithHtml(String to ,String subject ,String htmlcontent);
 	
-	void sendEmailWIthFile(String to ,String subject ,String message,File file);
+	void sendEmailWithFile(String to ,String subject ,String message,File file);
 }
