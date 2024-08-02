@@ -19,7 +19,7 @@ public class SignupServiceImpl implements SignupService {
         // Check if phone number already exists
         SignupEntity existingPhoneEntity = signupRepository.findByPhoneNumber(signupEntity.getPhoneNumber());
         if (existingPhoneEntity != null) {
-            return "Phone Number is already registered";
+            return "Phone Number is already Registered";
         }
 
         // Check if email ID already exists

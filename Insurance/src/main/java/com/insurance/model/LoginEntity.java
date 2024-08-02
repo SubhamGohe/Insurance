@@ -17,10 +17,10 @@ import lombok.Setter;
 @Setter
 @Getter
 @NoArgsConstructor
-//@Entity
+@Entity
 public class LoginEntity {
-//	    @Id
-//	    @GeneratedValue(strategy = GenerationType.AUTO)
+	    @Id
+	    @GeneratedValue(strategy = GenerationType.AUTO)
 	    private long clientId;
 
 //	    @NotBlank(message = "Name is mandatory")
